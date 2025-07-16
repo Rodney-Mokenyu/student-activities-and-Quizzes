@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,body {
+    height: 100%;
+    margin: 0;
+    background-color: var(--color-honeydew);
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+nav {
+  background-color:var(--navbar-color-teal) ;
+}
+
+main {
+    flex: 1;
+}
+
+.tables-overlay {
+    background:#FFF9C4;
+     z-index:10;
+}
+
+#loading-spinner {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+
+.card {
+    position: relative;
+    z-index:1; overflow:hidden; 
+    cursor:pointer;
+    background-color: #FDE2E2;
+    height: 200px;
+    width: 200px;
+    color: #2C3E50;
+    background-image: url("../assets/cards-logo-mobile.png" );
+    background-size: contain;
+}
+
+picture img {
+  object-fit:cover; height:200px;
+}
+
+
+
+
+.hover-reveal {
+  position: absolute;
+  top: 5;
+  transform: translateY(150%);
+
+  right: 15%;
+  
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  background-color: #f8f9fa;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.card-btn:hover .hover-reveal {
+  opacity: 1;
+}

@@ -1,0 +1,73 @@
+[
+  {
+    "projectUrl":"https://www.google.com",
+    "projectName": "Separation Techniques challenge",
+    "projectDescription": "Challenging other groups on how to separate different mixtures. not only how well, but how fast too",
+    "projectScore": 100,
+    "projectIndex": 0,
+    "dateCreated": "2025-07-12",
+    "groups": [
+      {
+        "groupName": "Group 1",
+        "groupPoints": 50,
+        "groupMembers": ["Pokaew", "Kaohom", "Gun"]
+      },
+      {
+        "groupName": "Group 2",
+        "groupPoints": 50,
+        "groupMembers": ["Ping-an", "Tiger", "Mokaow", "Yiwa"]
+      },
+      {
+        "groupName": "Group 3",
+        "groupPoints": 75,
+        "groupMembers": ["Park", "Nakrop", "Auto"]
+      },
+      {
+        "groupName": "Group 4",
+        "groupPoints": 60,
+        "groupMembers": ["Kahofon", "Nani", "Praewa", "Meena"]
+      },
+      {
+        "groupName": "Group 5",
+        "groupPoints": 90,
+        "groupMembers": ["Pheem", "A-chi", "Cooper"]
+      }
+    ]
+  },
+  {
+    "projectUrl":"https://www.google.com",
+    "projectName": "Separation Techniques Excercises",
+    "projectDescription": "Answering the questions in the workbook(page 25) and textbook (page 34)",
+    "projectScore": 20,
+    "projectIndex": 0,
+    "dateCreated": "2025-07-15",
+    "groups": [
+      {
+        "groupName": "Group 1",
+        "groupPoints": 8.5,
+        "groupMembers": ["Pokaew", "Kaohom", "Gun"]
+      },
+      {
+        "groupName": "Group 2",
+        "groupPoints": 6.5,
+        "groupMembers": ["Ping-an", "Tiger", "Mokaow", "Yiwa"]
+      },
+      {
+        "groupName": "Group 3",
+        "groupPoints": 7.5,
+        "groupMembers": ["Park", "Nakrop", "Auto"]
+      },
+      {
+        "groupName": "Group 4",
+        "groupPoints": 8.5,
+        "groupMembers": ["Kahofon", "Nani", "Praewa", "Meena"]
+      },
+      {
+        "groupName": "Group 5",
+        "groupPoints": 19,
+        "groupMembers": ["Pheem", "A-chi", "Cooper"]
+      }
+    ]
+  }
+  
+]

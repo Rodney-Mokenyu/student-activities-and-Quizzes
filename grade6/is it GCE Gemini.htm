@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days to GCE Countdown</title>
+    <!-- Bootstrap CSS CDN for basic styling utilities -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Font for 'Inter' -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for the page */
+        body {
+            font-family: 'Inter', sans-serif; /* Apply the beautiful Inter font */
+            display: flex;
+            flex-direction: column; /* Arrange items vertically */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars due to animation */
+            position: relative; /* Needed for absolute positioning of star and text */
+            color: white; /* Default text color for contrast */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Text shadow for readability */
+            cursor: default; /* Ensure default cursor */
+            touch-action: none; /* Prevent default touch actions like scrolling/zooming */
+            font-size: 16px; /* Base font size for 'em' units on larger screens */
+
+            /* Cameroon Flag Background */
+            /* Green: #008753, Red: #CE1126, Yellow: #FCD116 */
+            background: linear-gradient(to right,
+                        #008753 0%, #008753 33.33%, /* Green stripe */
+                        #CE1126 33.33%, #CE1126 66.66%, /* Red stripe */
+                        #FCD116 66.66%, #FCD116 100% /* Yellow stripe */
+                    );
+            background-size: 25vw 100vh; /* Initial size: 25% of viewport width, full height */
+            background-position: center center; /* Center the background stripes */
+            background-repeat: no-repeat; /* Ensure stripes don't repeat */
+            animation: flag-grow 10s infinite alternate ease-in-out; /* Animation for the flag */
+        }
+
+        /* Keyframes for the flag background animation */
+        @keyframes flag-grow {
+            0% {
+                background-size: 25vw 100vh; /* Start at 25% width */
+            }
+            100% {
+                background-size: 100vw 100vh; /* Grow to 100% width */
+            }
+        }
+
+        /* CSS for the bright yellow star */
+        .star-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the star precisely */
+            width: 15vw; /* Size of the star, responsive to viewport width */
+            height: 15vw; /* Maintain aspect ratio */
+            background-color: #FCD116; /* Bright yellow color for the star */
+            /* Clip-path to create a 5-pointed star shape */
+            clip-path: polygon(
+                50% 0%, /* Top point */
+                61.8% 35.3%, /* Top-right inner point */
+                95.1% 35.3%, /* Top-right outer point */
+                68.2% 57.7%, /* Middle-right inner point */
+                78.4% 90.5%, /* Bottom-right outer point */
+                50% 72.7%, /* Bottom inner point */
+                21.6% 90.5%, /* Bottom-left outer point */
+                31.8% 57.7%, /* Middle-left inner point */
+                4.9% 35.3%, /* Top-left outer point */
+                38.2% 35.3% /* Top-left inner point */
+            );
+            z-index: -1; /* Place the star behind the text but above the background */
+            /* Optional: Add a subtle animation to the star */
+            animation: star-pulse 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes star-pulse {
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
+        /* Styling for the countdown text */
+        #daysToGCE {
+            font-size: 5rem; /* Large font size */
+            font-weight: bold; /* Bold text */
+            text-align: center;
+            z-index: 1; /* Place text above everything else */
+            position: relative; /* Ensure z-index works */
+            color: white; /* Prefix text color remains white */
+
+            /* Responsive font size for smaller screens */
+            @media (max-width: 768px) {
+                font-size: 3rem;
+            }
+            @media (max-width: 480px) {
+                font-size: 2rem;
+            }
+        }
+
+        /* New class for green text, specifically for the number */
+        .green-text {
+            color: #008753; /* Green color for the number */
+        }
+
+        /* --- Human Figure Styles (Stickman) --- */
+        .human-figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-bottom: 20px;
+            z-index: 1;
+            /* Base size for the stickman, all internal parts scale relative to this */
+            width: 12vw; /* Make stickman narrower for a stick-like appearance */
+            max-width: 150px;
+            min-width: 80px;
+        }
+
+        .head {
+            width: 60%; /* Relative to human-figure width */
+            padding-bottom: 60%; /* Creates a square aspect ratio for circle */
+            height: 0;
+            background-color: transparent; /* Transparent head */
+            border-radius: 50%;
+            border: 3px solid #333; /* Outline only */
+            position: relative;
+            z-index: 2;
+        }
+
+        .body-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%; /* Take full width of human-figure */
+        }
+
+        .body {
+            width: 3px; /* Very thin vertical line for body */
+            height: 10vw; /* Reduced height from 12vw */
+            max-height: 120px; /* Adjusted max-height */
+            min-height: 70px; /* Adjusted min-height */
+            background-color: #333; /* Color of the stickman lines */
+            position: relative;
+            margin-top: -0.5em; /* Overlap with head slightly */
+            z-index: 1;
+        }
+
+        /* --- Arms --- */
+        .arm {
+            width: 3px; /* Thin line for arm */
+            height: 7vw; /* Reduced height from 8vw */
+            max-height: 80px; /* Adjusted max-height */
+            min-height: 40px; /* Adjusted min-height */
+            background-color: #333; /* Color of the stickman lines */
+            position: absolute;
+            top: -1em; /* Adjusted: Moved arms higher to start from top of body */
+            z-index: 0;
+            transform-origin: bottom center; /* Changed origin to bottom for upward rotation */
+        }
+
+        .arm.left {
+            left: 50%; /* Position from center of body */
+            transform: translateX(-100%) rotate(-45deg); /* Rotated upwards */
+        }
+
+        .arm.right {
+            right: 50%; /* Position from center of body */
+            transform: translateX(100%) rotate(45deg); /* Rotated upwards */
+        }
+
+        /* --- Legs --- */
+        .legs-container {
+            display: flex;
+            gap: 0; /* No gap between legs as they originate from one point */
+            margin-top: 0; /* Connect directly to body */
+            z-index: 0;
+            width: 100%; /* Take full width of human-figure */
+            justify-content: center;
+            position: absolute; /* Position relative to body-container */
+            bottom: -0.5em; /* Align to bottom of body, slightly below */
+        }
+
+        .leg {
+            width: 3px; /* Thin line for leg */
+            height: 9vw; /* Reduced height from 10vw */
+            max-height: 100px; /* Adjusted max-height */
+            min-height: 60px; /* Adjusted min-height */
+            background-color: #333; /* Color of the stickman lines */
+            transform-origin: top center;
+        }
+
+        .leg:first-child { /* Left leg */
+            transform: rotate(15deg); /* Slightly splayed */
+        }
+
+        .leg:last-child { /* Right leg */
+            transform: rotate(-15deg); /* Slightly splayed */
+        }
+
+        /* --- Hands and Feet --- */
+        .hand, .foot {
+            width: 0.8em; /* Smaller size for hands/feet */
+            height: 0.8em;
+            background-color: #333; /* Same color as stickman lines */
+            border-radius: 50%; /* Circular shape */
+            position: absolute;
+            z-index: 1; /* Ensure they are visible */
+        }
+
+        .hand {
+            top: -0.4em; /* Adjusted: Position at the top of the arm for upward rotation */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .foot {
+            bottom: -0.4em; /* Position at the end of the leg */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- Heart Styles --- */
+        .heart {
+            position: absolute;
+            width: 2.5em; /* Slightly smaller relative size */
+            height: 2.5em;
+            background-color: #e74c3c; /* Red heart color */
+            transform: rotate(-45deg); /* Rotate to form heart shape */
+            top: 50%;
+            left: 50%;
+            margin-top: -1.25em; /* Relative adjustment */
+            margin-left: -1.25em; /* Relative adjustment */
+            z-index: 2;
+            /* Base animation, duration will be overridden by specific classes */
+            animation: heartbeat infinite alternate ease-in-out;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 2.5em; /* Slightly smaller relative size */
+            height: 2.5em;
+            position: absolute;
+            background-color: #e74c3c; /* Red heart color */
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -1.25em; /* Relative position */
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 1.25em; /* Relative position */
+        }
+
+        /* Keyframes for the nervous heartbeat animation (no change needed) */
+        @keyframes heartbeat {
+            0% {
+                transform: rotate(-45deg) scale(1);
+                box-shadow: 0 0 0 rgba(231, 76, 60, 0.7);
+            }
+            50% {
+                transform: rotate(-45deg) scale(1.1);
+                box-shadow: 0 0 15px rgba(231, 76, 60, 0.9);
+            }
+            100% {
+                transform: rotate(-45deg) scale(1);
+                box-shadow: 0 0 0 rgba(231, 76, 60, 0.7);
+            }
+        }
+
+        /* Heart Rate Classes */
+        .heart.normal-rate {
+            animation-duration: 1.2s; /* Slower, normal pace */
+        }
+
+        .heart.increased-rate {
+            animation-duration: 0.8s; /* Faster, increased pace */
+        }
+
+        .heart.fastest-rate {
+            animation-duration: 0.4s; /* Very fast, nervous pace */
+        }
+
+        /* --- Eyes Styles (adjusted for human figure) --- */
+        .eyes-container {
+            display: flex;
+            gap: 0.6em; /* Slightly smaller relative gap */
+            position: absolute;
+            top: 1.2em; /* Adjusted: Moved eyes higher */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+
+        /* Styles for a single eye */
+        .eye {
+            width: 1.8em; /* Slightly smaller relative size */
+            height: 1.8em;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #333;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        /* Styles for the pupil */
+        .pupil {
+            width: 0.9em; /* Slightly smaller relative size */
+            height: 0.9em;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s linear;
+        }
+
+        /* --- Mouth Container for dynamic expressions --- */
+        .mouth-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            width: 1.5em; /* Base width for all mouths */
+            height: 0.75em; /* Base height for all mouths */
+            border: 2px solid #333; /* Base border for all mouths */
+            background-color: transparent;
+            transition: all 0.3s ease-in-out; /* Smooth transition between expressions */
+        }
+
+        /* Smile Mouth */
+        .mouth-container.smile-mouth {
+            bottom: 0.5em; /* Adjusted: Moved smile further down */
+            border-top: none;
+            border-radius: 0 0 1em 1em;
+        }
+
+        /* Curious/Neutral Mouth */
+        .mouth-container.curious-mouth {
+            bottom: 0.8em; /* Adjusted: Moved curious mouth further down */
+            height: 2px; /* Very thin line */
+            border: none; /* No border, just background color */
+            background-color: #333; /* Solid line */
+            border-radius: 0; /* Straight line */
+        }
+
+        /* Nervous/Frown Mouth */
+        .mouth-container.nervous-mouth {
+            bottom: 0.5em; /* Adjusted: Moved frown further down */
+            border-bottom: none;
+            border-radius: 1em 1em 0 0;
+        }
+
+        /* --- Media Queries for Responsiveness --- */
+
+        /* Tablets and Laptops (e.g., max-width 1024px) */
+        @media (max-width: 1024px) {
+            body {
+                font-size: 14px; /* Slightly smaller base font for 'em' units */
+            }
+            .human-figure {
+                width: 15vw; /* Make stickman slightly larger on tablets */
+                max-width: 180px;
+                min-width: 100px;
+            }
+            .head {
+                width: 55%; /* Adjust head size slightly */
+                padding-bottom: 55%;
+            }
+            .body {
+                height: 12vw; /* Adjust body height */
+                max-height: 140px;
+                min-height: 80px;
+            }
+            .arm {
+                height: 8vw; /* Adjust arm height */
+                max-height: 100px;
+                min-height: 50px;
+            }
+            .leg {
+                height: 10vw; /* Adjust leg height */
+                max-height: 120px;
+                min-height: 70px;
+            }
+        }
+
+
+        /* Smaller Tablets and larger Phones (e.g., max-width 768px) */
+        @media (max-width: 768px) {
+            body {
+                font-size: 12px; /* Smaller base font for 'em' units */
+            }
+            .human-figure {
+                width: 20vw; /* Make stickman larger on smaller tablets/phones */
+                max-width: 120px; /* Cap max size */
+                min-width: 70px;
+            }
+            .head {
+                width: 60%; /* Revert head size to maintain proportion */
+                padding-bottom: 60%;
+            }
+            .body {
+                height: 15vw; /* Adjust body height for smaller screens */
+                max-height: 90px;
+                min-height: 50px;
+            }
+            .arm {
+                height: 10vw; /* Adjust arm height */
+                max-height: 60px;
+                min-height: 30px;
+            }
+            .leg {
+                height: 12vw; /* Adjust leg height */
+                max-height: 70px;
+                min-height: 40px;
+            }
+            #daysToGCE {
+                font-size: 2.5rem; /* Smaller font for countdown text */
+            }
+        }
+
+        /* Phones (e.g., max-width 480px) */
+        @media (max-width: 480px) {
+            body {
+                font-size: 10px; /* Even smaller base font for 'em' units */
+            }
+            .human-figure {
+                width: 30vw; /* Make stickman more prominent on phones */
+                max-width: 100px;
+                min-width: 60px;
+            }
+            .head {
+                width: 65%; /* Slightly larger head on very small screens */
+                padding-bottom: 65%;
+            }
+            .body {
+                height: 18vw; /* Adjust body height for phones */
+                max-height: 80px;
+                min-height: 40px;
+            }
+            .arm {
+                height: 12vw; /* Adjust arm height */
+                max-height: 50px;
+                min-height: 25px;
+            }
+            .leg {
+                height: 15vw; /* Adjust leg height */
+                max-height: 60px;
+                min-height: 30px;
+            }
+            #daysToGCE {
+                font-size: 1.8rem; /* Smallest font for countdown text */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Overlay for the star, positioned centrally -->
+    <div class="star-overlay"></div>
+
+    <!-- Human Figure Container -->
+    <div class="human-figure">
+        <div class="head">
+            <!-- Eyes container -->
+            <div class="eyes-container">
+                <div class="eye">
+                    <div class="pupil" id="pupilLeft"></div>
+                </div>
+                <div class="eye">
+                    <div class="pupil" id="pupilRight"></div>
+                </div>
+            </div>
+            <!-- Mouth Container for dynamic expression -->
+            <div class="mouth-container" id="stickmanMouth"></div>
+        </div>
+        <div class="body-container">
+            <!-- Arms -->
+            <div class="arm left">
+                <div class="hand"></div>
+            </div>
+            <div class="arm right">
+                <div class="hand"></div>
+            </div>
+            <!-- Body -->
+            <div class="body">
+                <!-- Heart is inside the body -->
+                <div class="heart" id="stickmanHeart"></div>
+            </div>
+            <!-- Legs -->
+            <div class="legs-container">
+                <div class="leg">
+                    <div class="foot"></div>
+                </div>
+                <div class="leg">
+                    <div class="foot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container for the countdown text -->
+    <h1 id="daysToGCE">
+        Days to GCE: <span class="green-text"></span>
+    </h1>
+
+
+    <footer class="container-fluid fw-bold text-center">
+        <p>Designed by oracle of Omaha</p>
+    </footer>
+
+    <script>
+        /**
+         * Function to calculate and update the days remaining until June 1st.
+         * If June 1st of the current year has passed, it calculates for the next year.
+         */
+        function updateDaysToGCE() {
+            const today = new Date(); // Get the current date
+            // Set the target date to June 1st of the current year (month is 0-indexed, so June is 5)
+            let gceDate = new Date(today.getFullYear(), 5, 1);
+
+            // If today's date is past June 1st of the current year,
+            // set the target date to June 1st of the next year.
+            if (today.getTime() > gceDate.getTime()) {
+                gceDate.setFullYear(today.getFullYear() + 1);
+            }
+
+            // Calculate the difference in milliseconds between the target date and today
+            const diffTime = gceDate.getTime() - today.getTime();
+
+            // Convert milliseconds to days and round up to ensure a full day is counted
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            // Update the text content of the HTML element, making only the number green
+            document.getElementById('daysToGCE').innerHTML = 'Days to GCE: <span class="green-text">' + diffDays + '</span>';
+
+            // --- Dynamic Stickman Expression Logic ---
+            const stickmanMouth = document.getElementById('stickmanMouth');
+            // Clear existing mouth classes
+            stickmanMouth.classList.remove('smile-mouth', 'curious-mouth', 'nervous-mouth');
+
+            // --- Dynamic Stickman Heart Rate Logic ---
+            const stickmanHeart = document.getElementById('stickmanHeart');
+            // Clear existing heart rate classes
+            stickmanHeart.classList.remove('normal-rate', 'increased-rate', 'fastest-rate');
+
+            if (diffDays >= 100) {
+                // Smiley face and normal heart rate
+                stickmanMouth.classList.add('smile-mouth');
+                stickmanHeart.classList.add('normal-rate');
+            } else if (diffDays >= 30) {
+                // Curious/Neutral face and increased heart rate (between 30 and 99 days)
+                stickmanMouth.classList.add('curious-mouth');
+                stickmanHeart.classList.add('increased-rate');
+            } else if (diffDays >= 0) {
+                // Nervous/Frown face and fastest heart rate (between 0 and 29 days)
+                stickmanMouth.classList.add('nervous-mouth');
+                stickmanHeart.classList.add('fastest-rate');
+            } else {
+                // GCE has passed, back to smiley face and normal heart rate for next year's countdown
+                stickmanMouth.classList.add('smile-mouth');
+                stickmanHeart.classList.add('normal-rate');
+            }
+        }
+
+        // Call the countdown function once immediately on page load
+        updateDaysToGCE();
+
+        // Set an interval to update the countdown every 24 hours (for normal operation)
+        setInterval(updateDaysToGCE, 1000 * 60 * 60 * 24);
+
+        // --- Event Listeners for Mouse and Touch ---
+        /**
+         * Function to make the pupils follow a given coordinate (mouse or touch).
+         * @param {number} clientX - The X coordinate of the pointer.
+         * @param {number} clientY - The Y coordinate of the pointer.
+         */
+        function trackPupils(clientX, clientY) {
+            const pupilLeft = document.getElementById('pupilLeft');
+            const pupilRight = document.getElementById('pupilRight');
+            const eyeLeft = pupilLeft.parentElement; // The .eye element
+            const eyeRight = pupilRight.parentElement; // The .eye element
+
+            // Define the maximum movement range for the pupils (in pixels)
+            // This is half the difference between eye width and pupil width
+            const maxMovement = (eyeLeft.offsetWidth - pupilLeft.offsetWidth) / 2;
+
+            // Function to calculate pupil position based on pointer coordinates relative to the eye
+            const calculatePupilPosition = (eyeElement, pointerX, pointerY) => {
+                const eyeRect = eyeElement.getBoundingClientRect();
+                // Get the center of the eye relative to the viewport
+                const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+                const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+                // Calculate angle from eye center to pointer
+                const angle = Math.atan2(pointerY - eyeCenterY, pointerX - eyeCenterX);
+
+                // Calculate distance from eye center to pointer, capped at maxMovement
+                const distance = Math.min(maxMovement, Math.hypot(pointerX - eyeCenterX, pointerY - eyeCenterY));
+
+                // Calculate pupil position within the eye's circular boundary
+                const pupilX = Math.cos(angle) * distance;
+                const pupilY = Math.sin(angle) * distance;
+
+                return { x: pupilX, y: pupilY };
+            };
+
+            // Calculate and apply positions for both pupils
+            const leftPupilPos = calculatePupilPosition(eyeLeft, clientX, clientY);
+            const rightPupilPos = calculatePupilPosition(eyeRight, clientX, clientY);
+
+            pupilLeft.style.transform = `translate(-50%, -50%) translate(${leftPupilPos.x}px, ${leftPupilPos.y}px)`;
+            pupilRight.style.transform = `translate(-50%, -50%) translate(${rightPupilPos.x}px, ${rightPupilPos.y}px)`;
+        }
+
+
+        // Call the countdown function once immediately
+        updateDaysToGCE();
+
+        // Set an interval to update the countdown every 24 hours
+        setInterval(updateDaysToGCE, 1000 * 60 * 60 * 24);
+
+        // --- Event Listeners for Mouse and Touch ---
+
+        // Mouse events for desktop
+        document.addEventListener('mousemove', (event) => {
+            trackPupils(event.clientX, event.clientY);
+        });
+
+        // Touch events for mobile
+        document.addEventListener('touchmove', (event) => {
+            // Prevent default touch behavior (like scrolling) to allow pupil tracking
+            event.preventDefault();
+            if (event.touches.length > 0) {
+                trackPupils(event.touches[0].clientX, event.touches[0].clientY);
+            }
+        }, { passive: false }); // Use passive: false to allow preventDefault()
+
+        // Optionally, reset pupils to center when touch ends
+        document.addEventListener('touchend', () => {
+            // Reset pupils to center by tracking to the center of the screen
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            trackPupils(centerX, centerY);
+        });
+
+    </script>
+</body>
+</html>

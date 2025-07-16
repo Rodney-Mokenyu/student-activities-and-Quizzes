@@ -1,0 +1,54 @@
+.project-card {
+  flex: 1 1 300px;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  background: linear-gradient(to bottom, #fefefe, #f0f8ff);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft elevation */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  max-inline-size: 500px;
+  block-size: auto;
+  cursor: pointer;
+  z-index: 5;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  transform: scale(1.02);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12); /* Hover elevation */
+}
+
+.card-body {
+      padding: 1rem;
+      flex-grow: 1;
+    }
+.card-body h4 {
+  color: #3a3a3a;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-body p {
+  font-size: 0.95em;
+  color: #555;
+}
+.date-created {
+      font-size: 0.9em;
+      color: gray;
+    }
+
+.card-image {
+  background-image: url('../assets/cards-logo-mobile.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 18.75rem;
+  inline-size: 100%;
+  max-inline-size: 800px;
+  border-radius: 0.8rem 0.8rem 0px 0px;
+}

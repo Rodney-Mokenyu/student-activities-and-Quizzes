@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--custom js-->
+    <script src="test.js"></script>
+    <!--External css-->
+    <link rel="stylesheet" href="../General styles.css"> <!--main style for all pages-->
+    <link rel="stylesheet" href="../tests/testStyles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                    <img src="../assets/logo.png" alt="Logo" width="90" height="90" class="d-inline-block align-text-top">
+                    <strong class="fs-2">Test Scores</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../intro.htm">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="gradeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Grade
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="gradeDropdown">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                                <li><a class="dropdown-item" href="#">3</a></li>
+                                <li><a class="dropdown-item" href="#">4</a></li>
+                                <li><a class="dropdown-item" href="#">5</a></li>
+                                <li><a class="dropdown-item" href="#">6</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container-fluid position-relative">
+        <section class="container py-4" id="cards-section">
+            <div class="row g-4">
+                <article class="col-12 col-md-4">
+                    <button class="card shadow-sm border-0 rounded-4 card-btn" aria-label="click to view scores" data-table="table1">
+                         <span class="hover-reveal">Click to view scores</span>
+                        <!-- Or use CSS to show this on hover -->
+                           <span class="hover-reveal">Click to view scores</span>
+                        <!-- Or use CSS to show this on hover -->
+                        
+                    </button>
+                </article>
+                <article class="col-12 col-md-4">
+                    <button class="card shadow-sm border-0 rounded-4 card-btn" aria-label="click to view scores" data-table="table2">
+                           <span class="hover-reveal">Click to view scores</span>
+                        <!-- Or use CSS to show this on hover -->
+                        
+                    </button>
+                </article>
+                <article class="col-12 col-md-4">
+                    <button class="card shadow-sm border-0 rounded-4 card-btn" aria-label="click to view scores" data-table="table3">
+                           <span class="hover-reveal">Click to view scores</span>
+                        <!-- Or use CSS to show this on hover -->
+                    </button>
+                </article>
+                <article class="col-12 col-md-4">
+                    <button class="card shadow-sm border-0 rounded-4 card-btn" aria-label="click to view scores" data-table="table4">
+                           <span class="hover-reveal">Click to view scores</span>
+                        <!-- Or use CSS to show this on hover -->
+                        
+                    </button>
+                </article>
+                <article class="col-12 col-md-4">
+                    <button class="card shadow-sm border-0 rounded-4 card-btn" aria-label="click to view scores" data-table="table5">
+                           <span class="hover-reveal">Click to view scores</span>
+                        <!-- Or use CSS to show this on hover -->
+                        
+                    </button>
+                </article>
+                <article class="col-12 col-md-4">
+                    <button class="card shadow-sm border-0 rounded-4 card-btn position-relative" aria-label="click to view scores" data-table="table6">
+                        <span class="hover-reveal">Click to view scores</span>
+                        <!-- Add your visible card content here -->
+                    </button>
+
+                </article>
+            </div>
+        </section>
+        <!-- Tables overlay -->
+        <div id="tables-overlay" class="tables-overlay d-none start-0 w-100">
+            <h2 class="text-center">Test scores/20</h2>
+            <div class="container py-4 h-100 d-flex flex-column">
+                <button type="button" class="btn btn-secondary align-self-end mb-3" id="close-table-button">Close</button>
+                <div class="flex-fill d-flex align-items-center justify-content-center">
+                    <div class="w-100">
+                        <table class="table table-striped table-bordered table-hover d-none" id="table1">
+                            <thead>
+                                <tr class="text-primary">
+                                <th>Number</th>
+                                <th>Student Name</th>
+                                <th>Score</th>
+                                <th>Remark</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--Test scores for card 1-->
+                            </tbody>
+                            </table>
+
+                        <table class="table table-striped table-bordered table-hover d-none" id="table2">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Student Name</th>
+                                    <th>Score</th>
+                                    <th>Remark</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Test scores for Card 2 -->
+                            </tbody>
+                        </table>
+                        <table class="table table-striped table-bordered table-hover d-none" id="table3">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Student Name</th>
+                                    <th>Score</th>
+                                    <th>Remark</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Test scores for Card 3 -->
+                            </tbody>
+                        </table>
+                        <table class="table table-striped table-bordered table-hover d-none" id="table4">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Student Name</th>
+                                    <th>Score</th>
+                                    <th>Remark</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Test scores for Card 4 -->
+                            </tbody>
+                        </table>
+                        <table class="table table-striped table-bordered table-hover d-none" id="table5">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Student Name</th>
+                                    <th>Score</th>
+                                    <th>Remark</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Test scores for Card 5 -->
+                            </tbody>
+                        </table>
+                        <table class="table table-striped table-bordered table-hover d-none" id="table6">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Student Name</th>
+                                    <th>Score</th>
+                                    <th>Remark</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Test scores for Card 6 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+           /* // Show table overlay on card click
+            document.querySelectorAll('.card-btn').forEach(card => {
+                card.addEventListener('click', function() {
+                    const tableId = this.getAttribute('data-table');
+                    document.getElementById('tables-overlay').style.display = 'block';
+                    document.querySelectorAll('#tables-overlay table').forEach(tbl => tbl.classList.add('d-none'));
+                    document.getElementById(tableId).classList.remove('d-none');
+                });
+            });
+            // Close overlay
+            document.getElementById('close-table-button').addEventListener('click', function() {
+                document.getElementById('tables-overlay').style.display = 'none';
+                document.querySelectorAll('#tables-overlay table').forEach(tbl => tbl.classList.add('d-none'));
+            });*/
+        </script>
+        
+    </main>
+
+    <footer class="container-fluid fw-bold text-center">
+        <p>Designed by oracle of Omaha</p>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

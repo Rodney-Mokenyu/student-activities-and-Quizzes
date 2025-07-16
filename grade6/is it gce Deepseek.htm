@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days to GCE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        .flag-container {
+            position: absolute;
+            height: 25%;
+            width: 100%;
+            display: flex;
+            animation: expandFlag 8s infinite alternate ease-in-out;
+            z-index: -1;
+        }
+
+        .flag-stripe {
+            flex: 1;
+            height: 100%;
+            position: relative;
+        }
+
+        .green {
+            background-color: #007a5e;
+        }
+
+        .red {
+            background-color: #ce1126;
+        }
+
+        .yellow {
+            background-color: #fcd116;
+        }
+
+        .star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fcd116;
+            font-size: 5vh;
+        }
+
+        .countdown {
+            font-size: 5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+
+        @keyframes expandFlag {
+            0% {
+                height: 25%;
+            }
+            100% {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flag-container">
+        <div class="flag-stripe green"></div>
+        <div class="flag-stripe red">
+            <div class="star">★</div>
+        </div>
+        <div class="flag-stripe yellow"></div>
+    </div>
+
+    <div class="countdown" id="countdown">Days to GCE: <span id="days"></span></div>
+
+
+    <footer class="container-fluid fw-bold text-center">
+        <p>Designed by oracle of Omaha</p>
+    </footer>
+
+    
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            let year = now.getFullYear();
+            
+            // Check if June 1st has already passed this year
+            const gceDate = new Date(year, 5, 1); // Month is 0-indexed (5 = June)
+            if (now > gceDate) {
+                gceDate.setFullYear(year + 1);
+            }
+            
+            const diffTime = gceDate - now;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('days').textContent = diffDays;
+        }
+
+        // Update immediately and then every day
+        updateCountdown();
+        setInterval(updateCountdown, 86400000); // Update every 24 hours
+    </script>
+
+    
+</body>
+</html>

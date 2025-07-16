@@ -1,0 +1,75 @@
+body {
+    background-color: var(--navbar-color-cadet-blue);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+}
+th {
+    font-size: 2rem;
+}
+thead {
+  background-color: #e3f2fd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #e1f5fe;
+}
+
+td div {
+  margin-bottom: 4px;
+}
+.badge-gold {
+  color: gold;
+  font-weight: bold;
+}
+
+.badge-silver {
+  color: silver;
+  font-weight: bold;
+}
+
+.badge-bronze {
+  color: #cd7f32;
+  font-weight: bold;
+}
+
+
+@media print {
+  body {
+    font-family: 'Georgia', serif;
+    color: #000;
+    background: none;
+  }
+
+  .project-card, .card-image, .navbar, footer {
+    display: none !important;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    border: 1px solid #333;
+    padding: 6px;
+  }
+
+  h2, h3 {
+    color: #000;
+    margin-top: 1.5rem;
+  }
+}

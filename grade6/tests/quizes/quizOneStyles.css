@@ -1,0 +1,57 @@
+body {
+  font-family: 'Comic Sans MS', 'Segoe UI', cursive, sans-serif;
+  background: linear-gradient(to right, #fefcea, #f1da36);
+  color: #333;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #2196f3;
+}
+
+#timer {
+  transition: background-color 0.5s ease;
+}
+
+#quizBox {
+  min-height: 300px;
+  font-size: 1.25rem;
+}
+
+.btn {
+  min-width: 100px;
+}
+
+.option {
+  background-color: #e3f2fd;
+  border: 2px solid #90caf9;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.option:hover {
+  background-color: #bbdefb;
+}
+
+.option.selected {
+  background-color: #64b5f6;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  #quizBox {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+}

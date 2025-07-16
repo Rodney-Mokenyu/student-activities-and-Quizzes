@@ -20,13 +20,127 @@ const db = getFirestore(app);
 const studentName = prompt("Enter your name:") || "Anonymous";
 
 // ✅ Your quiz logic
-const questions = [/* your existing question objects */];
+const questions = [
+  {
+    "question": "Which of the following is a mixture?",
+    "options": {
+      "A": "Sand",
+      "B": "Iron",
+      "C": "Gold",
+      "D": "Salt water"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Mali has a mixture of fine sand and small stones. What technique can she use to separate the fine sand from the stones?",
+    "options": {
+      "A": "Filtration",
+      "B": "Magnet attraction",
+      "C": "Sifting",
+      "D": "Decantation"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Which of the following mixtures can be best separated by magnetic attraction?",
+    "options": {
+      "A": "Sugar and pepper",
+      "B": "Oil and water",
+      "C": "Wood chips and stones",
+      "D": "Iron and sulfur"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "We can use a ___________ to separate a mixture of sand and salt solution.",
+    "options": {
+      "A": "sieve",
+      "B": "magnet",
+      "C": "alum",
+      "D": "filter paper"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "What is the technique that can be used to separate cherry tomatoes from nuts?",
+    "options": {
+      "A": "Filtration",
+      "B": "Precipitation",
+      "C": "Handpicking",
+      "D": "Decantation"
+    },
+    "answer": "C"
+  },
+  {
+    "question": "Sifting is used to separate a mixture of different sized __________",
+    "options": {
+      "A": "sediments",
+      "B": "solids",
+      "C": "liquids",
+      "D": "gases"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "The diagram shows the set-up of the apparatus of a separation technique. What is represented by X?",
+    "options": {
+      "A": "Residue",
+      "B": "Filtrate",
+      "C": "Precipitate",
+      "D": "Alum"
+    },
+    "answer": "B",
+    "image": "question7_Image.jpg"
+  },
+  {
+    "question": "What name is given to the solid which collects in the filter paper during filtration?",
+    "options": {
+      "A": "Filtrate",
+      "B": "Residue",
+      "C": "Distillate",
+      "D": "Precipitate"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "Decantation is used to _____________.",
+    "options": {
+      "A": "separate a liquid from a soluble solid",
+      "B": "separate a liquid from an insoluble solid",
+      "C": "separate a mixture of two liquids",
+      "D": "separate solids of different sizes"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "Which of the following techniques can be used to separate an insoluble solid and a liquid?",
+    "options": {
+      "A": "I and II",
+      "B": "II and IV",
+      "C": "I, II and III",
+      "D": "I, II and IV"
+    },
+    "answer": "D"
+  },
+  {
+    "question": "Which of the following statements is true about precipitation?",
+    "options": {
+      "A": "Using layers of different stones and sand",
+      "B": "Allowing the solid in a liquid to settle to the bottom of a container before the liquid is poured off the top",
+      "C": "Allowing water to evaporate, leaving a solid residue behind",
+      "D": "Converting a substance that dissolves in a liquid into a solid by adding other substance"
+    },
+    "answer": "D"
+  }
+
+];
 
 let currentIndex = 0;
 let selectedAnswers = new Array(questions.length).fill(null);
 let timer = null;
 let timeLeft = questions.length * 45;
-let tickSound = new Audio("tick.mp3");
+let tickSound = new Audio("./path/to/tick.mp3");
+
 
 const quizBox = document.getElementById("quizBox");
 const timerEl = document.getElementById("timer");

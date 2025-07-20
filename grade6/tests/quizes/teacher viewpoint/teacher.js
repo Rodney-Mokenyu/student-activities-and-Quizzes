@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
  const firebaseConfig = {
     apiKey: "AIzaSyCpXpy72_xXEl57uLFDOZ2-R1qaBRVJKMo",
@@ -55,19 +56,28 @@ async function loadResults() {
 loadResults();
 
 /* Clear results button functionality */
+
+// 5) **Insert your Clear-All button logic here**, at the bottom**
+
 const clearResultsBtn = document.getElementById("clearResultsBtn");
 clearResultsBtn.addEventListener("click", async () => {
-  if (confirm("Are you sure you want to clear all results? This action cannot be undone.")) {
-    const resultsSnapshot = await getDocs(collection(db, "quiz_results"));  
-    const batch = db.batch();
-    resultsSnapshot.forEach(doc => {
-      batch.delete(doc.ref);
-    });
-    await batch.commit();
-    alert("All results cleared successfully.");
-    loadResults(); // Reload results after clearing
-  }
+  if (!confirm("Are you sure you want to clear all results?")) return;
+
+  // Fetch all quiz_results docs
+  const snapshot = await getDocs(collection(db, "quiz_results"));
+
+  // Fire off parallel deletes
+  const deletes = snapshot.docs.map((snap) =>
+    deleteDoc(doc(db, "quiz_results", snap.id))
+  );
+
+  // Wait for them all
+  await Promise.all(deletes);
+
+  alert("All results cleared.");
+  loadResults(); // refresh the table
 });
+
 
 // add logic to color the  Score based on its value
 

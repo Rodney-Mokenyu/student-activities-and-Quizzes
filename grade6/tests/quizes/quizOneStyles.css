@@ -1,5 +1,12 @@
-body {
-  font-family: 'Comic Sans MS', 'Segoe UI', cursive, sans-serif;
+
+  body {
+  font-family:
+    'Sarabun',            /* primary Thai+Latin from Google Fonts */
+    'Noto Sans Thai',     /* fallback Thai+Latin */
+    Arial, Helvetica,
+    sans-serif;
+  line-height: 1.6;
+  font-size: 1rem;        /* scalable, maybe bump to 1.1rem for small screens */
   background: linear-gradient(to right, #fff7e6, #ffe4ec);
   color: #333;
   padding-bottom: 2.5rem; /* 40px → 2.5rem */

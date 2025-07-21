@@ -40,6 +40,7 @@ let tickSound = new Audio("clock-tick.mp3");
 tickSound.volume = 0.4; // optional: reduce volume
 
 // ✅ Quiz Questions
+/*
 const questions = [
   {
     question: "Which of the following is a mixture?",
@@ -94,6 +95,64 @@ const questions = [
       B: "Allowing the solid in a liquid to settle to the bottom of a container before the liquid is poured off the top",
       C: "Allowing water to evaporate, leaving a solid residue behind",
       D: "Converting a substance that dissolves in a liquid into a solid by adding other substance"
+    },
+    answer: "D"
+  }
+];
+*/
+const questions = [
+  {
+    question: "If you want to remove soil, dust and leaves from water, which method would you use?",
+    options: { A: "Precipitation ", B: "Filtration ", C: "Decantation ", D: "Sifting" },
+    answer: "B"
+  },
+  {
+    question: "Somsak makes some coffee with a coffee maker. Which tool would best be used to separate the coffee grounds from the coffee drink?",
+    options: { A: "Strainer", B: "Filter paper", C: "Colander", D: "Perforated plate sieve" },
+    answer: "B"
+  },
+  {
+    question: " In the water treatment process, the raw water is treated with a chemical to precipitate the dirt and bacteria in the water. What is the chemical used? ",
+    options: { A: "Alum", B: "Chlorine", C: "Vinegar", D: "Limestone" },
+    answer: "D"
+  },
+  {
+    question: "We can use a ___________ to separate a mixture of sand and salt solution.",
+    options: { A: "sieve", B: "magnet", C: "alum", D: "filter paper" },
+    answer: "A"
+  },
+  {
+    question: "What is the technique that can be used to separate chalk from a mixture of chalk and water?",
+    options: { A: "Filtration", B: "Precipitation", C: "Handpicking", D: "Decantation" },
+    answer: "A"
+  },
+  {
+    question: "Sifting is used to separate a mixture of different sized __________",
+    options: { A: "sediments", B: "solids", C: "liquids", D: "gases" },
+    answer: "B"
+  },
+  {
+    question: "Which of the following best describes a soluble solid?",
+    options: { A: "A solid that can dissolve in water", B: "A solid that cannot dissolve in water", C: "A olid that floats on water", D: "A solid that melts when heated" },
+    answer: "A"
+  },
+  {
+    question: "which digests in the mouth?",
+    options: { A: "Milk", B: "Ricw", C: "Fruits", D: "Meat" },
+    answer: "B"
+  },
+  {
+    question: "How can beans be separated from a mixture with sand?",
+    options: { A: "Filtration", B: "Handpicking", C: "Decantation", D: "Sedimentation" },
+    answer: "B"
+  },
+  {
+    question: "How can salt be separated from a mixture with water?",
+    options: {
+      A: "Evaporation",
+      B: "Precipitation",
+      C: "Handpicking",
+      D: "Decantation"
     },
     answer: "D"
   }

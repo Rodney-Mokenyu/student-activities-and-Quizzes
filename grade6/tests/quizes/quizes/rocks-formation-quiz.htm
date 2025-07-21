@@ -95,7 +95,7 @@
 </head>
 <body>
   <div class="container-fluid quiz-container">
-    <h1 class="text-center mb-4">Arrange the Steps to Form Intrusive Igneous Rock</h1>
+    <h1 class="text-center mb-4">Arrange the Steps to Form Igneous Rock</h1>
 
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 px-3">
       <div class="timer mb-2 mb-md-0">
@@ -157,18 +157,18 @@
       { id: "1", text: "Magma is hot, melted rock deep under the Earth’s surface." },
       { id: "2", text: "Magma moves into cracks below the ground." },
       { id: "3", text: "The magma cools slowly while still underground." },
-      { id: "4", text: "When it hardens, it becomes intrusive igneous rock." }
+      { id: "4", text: "When it solidifies, it becomes intrusive igneous rock." }
     ];
     const intrusiveDistractor = {
       id: "d1",
-      text: "When it hardens, it becomes extrusive igneous rock."
+      text: "When it solidifies, it becomes extrusive igneous rock."
     };
 
     const extrusiveSteps = [
-      { id: "1", text: "Magma erupts onto Earth’s surface as lava." },
+      { id: "1", text: "Magma moves out onto Earth’s surface as lava." },
       { id: "2", text: "Lava flows and spreads out over the ground." },
-      { id: "3", text: "The lava cools quickly in open air." },
-      { id: "4", text: "When it hardens, it becomes extrusive igneous rock." }
+      { id: "3", text: "The lava cools quickly." },
+      { id: "4", text: "When it solidifies, it becomes extrusive igneous rock." }
     ];
     const extrusiveDistractor = {
       id: "d2",
@@ -288,7 +288,7 @@
       initQuiz(
         extrusiveSteps,
         extrusiveDistractor,
-        "Arrange the Steps to Form Extrusive Igneous Rock"
+        "Arrange the Steps to Form Igneous Rock"
       );
     });
 
@@ -296,10 +296,9 @@
       initQuiz(
         intrusiveSteps,
         intrusiveDistractor,
-        "Arrange the Steps to Form Intrusive Igneous Rock"
+        "Arrange the Steps to Form Igneous Rock"
       );
     });
   </script>
 </body>
 </html>
-

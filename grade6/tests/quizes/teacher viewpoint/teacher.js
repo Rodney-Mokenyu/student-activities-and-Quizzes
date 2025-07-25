@@ -82,4 +82,8 @@ clearResultsBtn.addEventListener("click", async () => {
 // add logic to color the  Score based on its value
 
 // ✅ Load results on page load
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", loadResults);
+=======
+document.addEventListener("DOMContentLoaded", loadResults);
+>>>>>>> de1e5a80f056a28205ed58f79a24b59bbaa1abb4

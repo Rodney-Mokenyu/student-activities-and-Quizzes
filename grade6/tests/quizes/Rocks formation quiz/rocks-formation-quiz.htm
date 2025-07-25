@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <title>Igneous Rocks Quiz</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* Typography */
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      font-family: 'Fredoka One', sans-serif;
+      color: #2e7d32;
+    }
+    .btn-primary {
+      background-color: #2e7d32;
+      border-color: #2e7d32;
+    }
+
+    /* Layout */
+    .quiz-container {
+      flex: 1;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    #tiles-container,
+    #drop-zones {
+      min-height: 12rem;
+    }
+
+    /* Tiles */
+    .tile {
+      background: #fff;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.75rem;
+      cursor: grab;
+      transition: transform 0.2s;
+    }
+    .tile:active {
+      transform: scale(1.02);
+    }
+
+    /* Drop-zones */
+    .drop-zone {
+      background: rgba(255,255,255,0.8);
+      border: 2px dashed #8bc34a;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .drop-zone.correct {
+      background: #dcedc1;
+      border-color: #2e7d32;
+    }
+    .drop-zone.incorrect {
+      background: #ffcdd2;
+      border-color: #c62828;
+    }
+
+    /* Timer & Header */
+    .timer {
+      font-size: 1.25rem;
+    }
+    @media (max-width: 576px) {
+      .timer {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid quiz-container">
+    <h1 class="text-center mb-4">Arrange the Steps to Form Igneous Rock</h1>
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 px-3">
+      <div class="timer mb-2 mb-md-0">
+        Time elapsed: <strong><span id="timer">0:00</span></strong>
+      </div>
+      <button id="nextTaskBtn" class="btn btn-primary" disabled>
+        Next Task
+      </button>
+    </div>
+
+    <div class="row gx-4 gy-4 px-3">
+      <!-- Drop zones -->
+      <div class="col-12 col-md-8">
+        <div id="drop-zones" class="row g-3"></div>
+      </div>
+
+      <!-- Tiles -->
+      <div class="col-12 col-md-4">
+        <div id="tiles-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Completion Modal -->
+  <div
+    class="modal fade"
+    id="completionModal"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-3 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title">Congratulations!</h5>
+        </div>
+        <div class="modal-body">
+          You completed the quiz in
+          <strong><span id="finalTime"></span></strong>.
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-dismiss="modal"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // --- Quiz Data ---
+    const intrusiveSteps = [
+      { id: "1", text: "Magma is hot, melted rock deep under the Earth’s surface." },
+      { id: "2", text: "Magma moves into cracks below the ground." },
+      { id: "3", text: "The magma cools slowly while still underground." },
+      { id: "4", text: "When it solidifies, it becomes intrusive igneous rock." }
+    ];
+    const intrusiveDistractor = {
+      id: "d1",
+      text: "When it solidifies, it becomes extrusive igneous rock."
+    };
+
+    const extrusiveSteps = [
+      { id: "1", text: "Magma moves out onto Earth’s surface as lava." },
+      { id: "2", text: "Lava flows and spreads out over the ground." },
+      { id: "3", text: "The lava cools quickly." },
+      { id: "4", text: "When it solidifies, it becomes extrusive igneous rock." }
+    ];
+    const extrusiveDistractor = {
+      id: "d2",
+      text: "Magma moves into cracks below the ground."
+    };
+
+    // --- State & Refs ---
+    let secondsElapsed = 0;
+    let timerInterval = null;
+    let correctCount = 0;
+    const totalSteps = 4;
+
+    const timerDisplay = document.getElementById("timer");
+    const finalTimeDisplay = document.getElementById("finalTime");
+    const tilesContainer = document.getElementById("tiles-container");
+    const dropZonesContainer = document.getElementById("drop-zones");
+    const quizTitle = document.querySelector("h1");
+    const nextTaskBtn = document.getElementById("nextTaskBtn");
+    const completionModal = new bootstrap.Modal(document.getElementById("completionModal"));
+
+    // --- Timer ---
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${m}:${s.toString().padStart(2, "0")}`;
+    }
+    function startTimer() {
+      clearInterval(timerInterval);
+      secondsElapsed = 0;
+      timerDisplay.textContent = formatTime(0);
+      timerInterval = setInterval(() => {
+        secondsElapsed++;
+        timerDisplay.textContent = formatTime(secondsElapsed);
+      }, 1000);
+    }
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
+
+    // --- Drag & Drop ---
+    function handleDragStart(e) {
+      e.dataTransfer.setData("text/plain", e.target.dataset.id);
+    }
+    function handleDragOver(e) {
+      e.preventDefault();
+    }
+    function handleDrop(e) {
+      e.preventDefault();
+      const draggedId = e.dataTransfer.getData("text/plain");
+      const tile = document.querySelector(`.tile[data-id='${draggedId}']`);
+      const zone = e.currentTarget;
+      const targetStep = zone.dataset.step;
+      if (!tile || tile.draggable === false) return;
+
+      if (draggedId === targetStep) {
+        zone.classList.add("correct");
+        tile.classList.add("bg-success", "text-white");
+        tile.draggable = false;
+        zone.appendChild(tile);
+        correctCount++;
+        if (correctCount === totalSteps) finishQuiz();
+      } else {
+        zone.classList.add("incorrect");
+        tile.classList.add("bg-danger", "text-white");
+        setTimeout(() => {
+          zone.classList.remove("incorrect");
+          tile.classList.remove("bg-danger", "text-white");
+        }, 800);
+      }
+    }
+
+    // --- Build UI ---
+    function createDropZones() {
+      dropZonesContainer.innerHTML = "";
+      for (let i = 1; i <= totalSteps; i++) {
+        const zone = document.createElement("div");
+        zone.className = "drop-zone col-12";
+        zone.dataset.step = i;
+        zone.textContent = `Step ${i}`;
+        zone.addEventListener("dragover", handleDragOver);
+        zone.addEventListener("drop", handleDrop);
+        dropZonesContainer.appendChild(zone);
+      }
+    }
+    function createTiles(steps, distractor) {
+      tilesContainer.innerHTML = "";
+      const list = [...steps, distractor].sort(() => Math.random() - 0.5);
+      list.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "tile";
+        card.draggable = true;
+        card.dataset.id = item.id;
+        card.textContent = item.text;
+        card.addEventListener("dragstart", handleDragStart);
+        tilesContainer.appendChild(card);
+      });
+    }
+
+    function initQuiz(steps, distractor, titleText) {
+      quizTitle.textContent = titleText;
+      nextTaskBtn.disabled = true;
+      correctCount = 0;
+      createDropZones();
+      createTiles(steps, distractor);
+      startTimer();
+    }
+
+    function finishQuiz() {
+      stopTimer();
+      finalTimeDisplay.textContent = formatTime(secondsElapsed);
+      completionModal.show();
+      nextTaskBtn.disabled = false;
+    }
+
+    // --- Events ---
+    nextTaskBtn.addEventListener("click", () => {
+      initQuiz(
+        extrusiveSteps,
+        extrusiveDistractor,
+        "Arrange the Steps to Form Igneous Rock"
+      );
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      initQuiz(
+        intrusiveSteps,
+        intrusiveDistractor,
+        "Arrange the Steps to Form Igneous Rock"
+      );
+    });
+  </script>
+</body>
+</html>

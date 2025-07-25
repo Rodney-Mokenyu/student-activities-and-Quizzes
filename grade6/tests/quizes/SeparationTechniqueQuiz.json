@@ -91,15 +91,16 @@
     "answer": "B"
   },
   {
-    "question": "Which of the following techniques can be used to separate an insoluble solid and a liquid?",
-    "options": {
-      "A": "I and II",
-      "B": "II and IV",
-      "C": "I, II and III",
-      "D": "I, II and IV"
-    },
-    "answer": "D"
+  "question": "Which of the following statements is true about mixtures?\nI  A mixture is made up of solid substances of the same size and shape.\nII A mixture is made up of two or more different substances which are not chemically combined.\nIII The substances in a mixture usually can be separated using physical methods.\nIV The substances in a mixture retain their physical properties.",
+  "options": {
+    "A": "I, II and III",
+    "B": "I, II and IV",
+    "C": "II, III and IV",
+    "D": "I, II, III and IV"
   },
+  "answer": "D"
+}
+,
   {
     "question": "Which of the following statements is true about precipitation?",
     "options": {

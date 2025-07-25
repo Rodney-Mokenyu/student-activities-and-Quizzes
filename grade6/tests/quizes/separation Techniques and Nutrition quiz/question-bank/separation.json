@@ -1,0 +1,89 @@
+
+  {"separation": [
+    {
+      "question": "Which statements are true about mixtures?",
+      "options": ["I, II and III", "I, II and IV", "II, III and IV", "I, II, III and IV"],
+      "answer": "II, III and IV"
+    },
+    {
+      "question": "Which of the following is a mixture?",
+      "options": ["Sand", "Iron", "Gold", "Salt water"],
+      "answer": "Salt water"
+    },
+    {
+      "question": "How can Mali separate fine sand from small stones?",
+      "options": ["Filtration", "Magnet attraction", "Sifting", "Decantation"],
+      "answer": "Sifting"
+    },
+    {
+      "question": "Which mixture can be best separated by magnetic attraction?",
+      "options": ["Sugar and pepper", "Oil and water", "Wood chips and stones", "Iron and sulfur"],
+      "answer": "Iron and sulfur"
+    },
+    {
+      "question": "What tool can separate sand and salt solution?",
+      "options": ["Sieve", "Magnet", "Alum", "Filter paper"],
+      "answer": "Filter paper"
+    },
+    {
+      "question": "What technique separates cherry tomatoes from nuts?",
+      "options": ["Filtration", "Precipitation", "Handpicking", "Decantation"],
+      "answer": "Handpicking"
+    },
+    {
+      "question": "Sifting is used to separate mixtures of different sized __________.",
+      "options": ["Sediments", "Solids", "Liquids", "Gases"],
+      "answer": "Solids"
+    },
+    {
+      "question": "In filtration, what is represented by X?",
+      "options": ["Residue", "Filtrate", "Precipitate", "Alum"],
+      "answer": "Filtrate"
+    },
+    {
+      "question": "What is the solid that collects in filter paper called?",
+      "options": ["Filtrate", "Residue", "Distillate", "Precipitate"],
+      "answer": "Residue"
+    },
+    {
+      "question": "Decantation is used to _____________.",
+      "options": [
+        "Separate a liquid from a soluble solid",
+        "Separate a liquid from an insoluble solid",
+        "Separate a mixture of two liquids",
+        "Separate solids of different sizes"
+      ],
+      "answer": "Separate a liquid from an insoluble solid"
+    },
+    {
+      "question": "Which techniques separate an insoluble solid and a liquid?",
+      "options": ["I and II", "II and IV", "I, II and III", "I, II and IV"],
+      "answer": "I, II and IV"
+    },
+    {
+      "question": "Which statement is true about precipitation?",
+      "options": [
+        "Using layers of stones and sand",
+        "Allowing solids to settle before pouring off liquid",
+        "Evaporating water to leave residue",
+        "Adding substances to form solids"
+      ],
+      "answer": "Allowing solids to settle before pouring off liquid"
+    },
+    {
+      "question": "Which method removes soil, dust and leaves from water?",
+      "options": ["Precipitation", "Filtration", "Decantation", "Sifting"],
+      "answer": "Filtration"
+    },
+    {
+      "question": "Which tool separates coffee grounds from coffee drink?",
+      "options": ["Strainer", "Filter paper", "Colander", "Perforated plate sieve"],
+      "answer": "Filter paper"
+    },
+    {
+      "question": "What chemical is used in water treatment to precipitate dirt?",
+      "options": ["Alum", "Chlorine", "Vinegar", "Limestone"],
+      "answer": "Alum"
+    }
+  ]
+}

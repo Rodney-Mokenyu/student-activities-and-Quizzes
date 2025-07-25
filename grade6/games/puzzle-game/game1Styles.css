@@ -1,0 +1,97 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    overflow: hidden; /* Prevent scrolling if content overflows */
+}
+
+#loginPage, #gameOverPage {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Gradient background */
+}
+
+#loginPage .card, #gameOverPage .card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #e2e6ea;
+}
+
+.header-bar {
+    border-bottom: 2px solid #5a6268;
+}
+
+.puzzle-col {
+    background-color: #f0f2f5;
+    border-right: 1px solid #dee2e6;
+}
+
+.words-list-col {
+    background-color: #f8f9fa;
+}
+
+.word-grid {
+    border: 2px solid #6c757d;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 10px;
+    border-radius: 8px;
+    /* Grid properties will be set by JS based on puzzle size */
+}
+
+.grid-cell {
+    width: 40px; /* Adjust cell size as needed */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.grid-cell.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+.grid-cell.found {
+    background-color: #28a745; /* Green for found letters */
+    color: white;
+}
+
+/* 3D Text Effect for Word Tiles */
+.word-tile {
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    background-color: #dc3545; /* Red initial */
+    font-size: 1rem;
+    text-shadow:
+        1px 1px #8b0000,
+        2px 2px #8b0000,
+        3px 3px #8b0000,
+        4px 4px #8b0000; /* Create the 3D depth */
+    transition: background-color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    border: 1px solid #a71d2a;
+}
+
+.word-tile.found {
+    background-color: #28a745; /* Green when found */
+    text-shadow:
+        1px 1px #196f3d,
+        2px 2px #196f3d,
+        3px 3px #196f3d,
+        4px 4px #196f3d; /* Green 3D shadow */
+    border: 1px solid #1c743b;
+}

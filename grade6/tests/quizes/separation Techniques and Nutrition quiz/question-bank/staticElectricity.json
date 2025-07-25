@@ -1,0 +1,129 @@
+{
+  "staticElectricity": [
+    {
+      "question": "What is static electricity?",
+      "options": [
+        "The flow of electrical charges in one direction",
+        "The buildup of electrical charges on the surface of an object",
+        "The result of a balance between negative and positive charges in an object",
+        "A phenomenon in which positive charges are transferred from one object to another"
+      ],
+      "answer": "The buildup of electrical charges on the surface of an object"
+    },
+    {
+      "question": "The overall charge on an object is neutral when the number of positive charges is ________ the number of negative charges.",
+      "options": ["More than", "Less than", "Equal to", "Unequal to"],
+      "answer": "Equal to"
+    },
+    {
+      "question": "A glass rod becomes negatively charged after being rubbed with a woolen cloth because...",
+      "options": [
+        "The negative charges are free to move about in the rod",
+        "The number of negative charges is distributed evenly in the rod",
+        "It has gained negative charges from the woolen cloth",
+        "It has lost negative charges to the woolen cloth"
+      ],
+      "answer": "It has gained negative charges from the woolen cloth"
+    },
+    {
+      "question": "What type of electrical charges move from one surface of an object to another to form a static charge?",
+      "options": ["Positive charges", "Negative charges", "Opposite charges", "All of the above"],
+      "answer": "Negative charges"
+    },
+    {
+      "question": "What happens when two plastic rods with negative charges come close to each other?",
+      "options": [
+        "The rods repel each other",
+        "The rods attract each other",
+        "The rods react with each other to make a spark",
+        "Nothing happens"
+      ],
+      "answer": "The rods repel each other"
+    },
+    {
+      "question": "Which of the following are examples of static electricity?",
+      "options": [
+        "I, II and III",
+        "I, II and IV",
+        "II, III and IV",
+        "I, II, III and IV"
+      ],
+      "answer": "I, II, III and IV"
+    },
+    {
+      "question": "Somsri uses a plastic comb to comb her dry hair. She then places the comb near some tiny pieces of paper. What will she observe?",
+      "options": [
+        "The comb has no effect on the pieces of paper",
+        "The pieces of paper are attracted to each other",
+        "The comb attracts the pieces of paper",
+        "The comb repels the pieces of paper"
+      ],
+      "answer": "The comb attracts the pieces of paper"
+    },
+    {
+      "question": "What happens when a balloon is rubbed with a cloth?",
+      "options": [
+        "The positive charges on the balloon move to the cloth",
+        "The positive charges on the cloth move to the balloon",
+        "The negative charges on the cloth move to the balloon",
+        "All the positive and negative charges on the cloth move to the balloon"
+      ],
+      "answer": "The negative charges on the cloth move to the balloon"
+    },
+    {
+      "question": "Two balloons are rubbed with a wool cloth and are placed close to each other. Why do the balloons repel each other?",
+      "options": [
+        "They receive opposite charges from the cloth",
+        "They have the same charge",
+        "They have opposite charges",
+        "They are neutral"
+      ],
+      "answer": "They have the same charge"
+    },
+    {
+      "question": "Two objects with _______ repel each other.",
+      "options": ["Like charges", "Unlike charges", "A positive charge and a negative charge", "Opposite charges"],
+      "answer": "Like charges"
+    },
+    {
+      "question": "A charged object has an excess of negative charges. What is its overall charge?",
+      "options": ["Positive", "Negative", "Opposite", "Neutral"],
+      "answer": "Negative"
+    },
+    {
+      "question": "Which of the following will attract each other?",
+      "options": [
+        "A charged object and a neutral object",
+        "A positively charged object and a negatively charged object",
+        "Two objects with opposite charges",
+        "All of the above"
+      ],
+      "answer": "All of the above"
+    },
+    {
+      "question": "Mali combs her hair with a comb. Her hair is dry. She notices the strands of her hair repel each other. What type of force is involved?",
+      "options": ["Frictional force", "Gravitational force", "Magnetic force", "Non-contact force"],
+      "answer": "Non-contact force"
+    },
+    {
+      "question": "What can we do to make an object electrically charged?",
+      "options": [
+        "Put it near to a neutral glass rod",
+        "Rub it with a cloth",
+        "Wipe it with a wet cloth",
+        "Wash it with some water"
+      ],
+      "answer": "Rub it with a cloth"
+    },
+    {
+      "question": "What happens when a glass rod and a piece of silk cloth are brought near each other?",
+      "options": [
+        "They attract each other",
+        "They repel each other",
+        "A spark is observed",
+        "Nothing happens"
+      ],
+      "answer": "They attract each other"
+    }
+  ]
+}

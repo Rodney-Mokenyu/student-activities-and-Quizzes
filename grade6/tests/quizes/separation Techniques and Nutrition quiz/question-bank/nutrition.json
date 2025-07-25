@@ -1,0 +1,89 @@
+{
+  "nutrition": [
+    {
+      "question": "Which of the following helps to prevent constipation?",
+      "options": ["I and II", "I and IV", "II and III", "III and IV"],
+      "answer": "I and IV"
+    },
+    {
+      "question": "Which of the following nutrients is not correctly matched to its function?",
+      "options": ["Proteins", "Fats", "Carbohydrates", "Vitamins"],
+      "answer": "Fats"
+    },
+    {
+      "question": "Which of the following represents the best source of carbohydrate?",
+      "options": ["Rice", "Egg", "Butter", "Coconut"],
+      "answer": "Rice"
+    },
+    {
+      "question": "Which food provides us with fiber?",
+      "options": ["I and II", "II and III", "I, II and III", "II, III and IV"],
+      "answer": "I, II and III"
+    },
+    {
+      "question": "What food should Somsak add to his dinner to make it healthier?",
+      "options": ["Some bread", "Some noodles", "Some dairy products", "Some vegetables and fruits"],
+      "answer": "Some vegetables and fruits"
+    },
+    {
+      "question": "Milk is a rich source of nutrient X. What is nutrient X?",
+      "options": ["Carbohydrate", "Protein", "Fat", "Vitamin"],
+      "answer": "Protein"
+    },
+    {
+      "question": "Which of the following contain food additives?",
+      "options": ["I and II", "II and III", "I, II and III", "I, II and IV"],
+      "answer": "I, II and III"
+    },
+    {
+      "question": "What will happen if a person eats more calories than his body requires?",
+      "options": ["He will lose weight", "His body will use stored fats for energy", "The extra energy will be converted into fats", "This will lower the risk for cancer"],
+      "answer": "The extra energy will be converted into fats"
+    },
+    {
+      "question": "Which statements are true about the Nutrition Flag?",
+      "options": ["I and II", "II and III", "I, II and III", "I, II and IV"],
+      "answer": "I, II and III"
+    },
+    {
+      "question": "What is Chati's BMI if she weighs 51.2 kg and is 160 cm tall?",
+      "options": ["12.5", "16.4", "20", "32"],
+      "answer": "20"
+    },
+    {
+      "question": "Based on the table, who is obese?",
+      "options": ["Annie", "Sabina", "Cindy", "Somsri"],
+      "answer": "Sabina"
+    },
+    {
+      "question": "Which shows the correct flow of food particles in the digestive system?",
+      "options": [
+        "Mouth → Esophagus → Stomach → Large intestine → Small intestine → Anus",
+        "Mouth → Esophagus → Stomach → Small intestine → Large intestine → Anus",
+        "Mouth → Stomach → Esophagus → Small intestine → Large intestine → Anus",
+        "Mouth → Esophagus → Stomach → Anus → Small intestine → Large intestine"
+      ],
+      "answer": "Mouth → Esophagus → Stomach → Small intestine → Large intestine → Anus"
+    },
+    {
+      "question": "The digestion of protein begins in the __________.",
+      "options": ["Pancreas", "Stomach", "Small intestine", "Large intestine"],
+      "answer": "Stomach"
+    },
+    {
+      "question": "What is the role of the large intestine in digestion?",
+      "options": [
+        "It absorbs digested proteins",
+        "It produces enzymes that digest starch",
+        "It absorbs excess water",
+        "It produces acidic juice to kill bacteria"
+      ],
+      "answer": "It absorbs excess water"
+    },
+    {
+      "question": "What is the function of bile?",
+      "options": ["Digest protein", "Digest carbohydrates", "Emulsify fats", "Eliminate undigested food"],
+      "answer": "Emulsify fats"
+    }
+  ] 
+}

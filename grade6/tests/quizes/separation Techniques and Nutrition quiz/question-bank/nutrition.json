@@ -1,14 +1,15 @@
 {
   "nutrition": [
     {
-      "question": "Which of the following helps to prevent constipation?",
+      "question": "Which of the following helps to prevent constipation? \nI. Rice \nII. Meat \n III. Butter \nIV. Vegetables",
       "options": ["I and II", "I and IV", "II and III", "III and IV"],
       "answer": "I and IV"
     },
     {
       "question": "Which of the following nutrients is not correctly matched to its function?",
       "options": ["Proteins", "Fats", "Carbohydrates", "Vitamins"],
-      "answer": "Fats"
+      "answer": "Fats",
+      "image": "images/nutrient_function.jpeg"
     },
     {
       "question": "Which of the following represents the best source of carbohydrate?",
@@ -16,14 +17,15 @@
       "answer": "Rice"
     },
     {
-      "question": "Which food provides us with fiber?",
+      "question": "Which food provides us with fiber? \nI Wholegrain bread \nII Orange \nIII Broccoli \nIV Meat",
       "options": ["I and II", "II and III", "I, II and III", "II, III and IV"],
       "answer": "I, II and III"
     },
     {
-      "question": "What food should Somsak add to his dinner to make it healthier?",
+"question": "What food should Somsak add to his dinner to make it healthier? \nHis diet is considered not healthy.\n What food should he add to his dinner to make it better?",
       "options": ["Some bread", "Some noodles", "Some dairy products", "Some vegetables and fruits"],
-      "answer": "Some vegetables and fruits"
+      "answer": "Some vegetables and fruits",
+      "image": "images/somsak meal.jpeg"
     },
     {
       "question": "Milk is a rich source of nutrient X. What is nutrient X?",
@@ -41,7 +43,8 @@
       "answer": "The extra energy will be converted into fats"
     },
     {
-      "question": "Which statements are true about the Nutrition Flag?",
+
+       "question": "Which statements are true about the Nutrition Flag?\nII. Eat plenty of vegetables and fruits daily\nIII. Eat adequate amounts of rice or alternative carbohydrate sources\nIV. Consume oil, sugar and salt in limited amounts\nV. Encourage the consumption of alcoholic beverages",
       "options": ["I and II", "II and III", "I, II and III", "I, II and IV"],
       "answer": "I, II and III"
     },
@@ -53,6 +56,7 @@
     {
       "question": "Based on the table, who is obese?",
       "options": ["Annie", "Sabina", "Cindy", "Somsri"],
+      "image": "images/bmi_table.jpeg",
       "answer": "Sabina"
     },
     {
